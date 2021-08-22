@@ -1,35 +1,31 @@
-import React, { PureComponent } from 'react';
-import {  View, Text, FlatList } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, FlatList, ScrollView, Text, View } from 'react-native';
 
-export default class App extends PureComponent {
-  
-  constructor() {
-    super();
-    this.state = {
-      data:[]
-    };
+export default function App() {
+
+  const [data, setData] = useState([]);
+
+  const apiCall = async () => {
+     try {
+      const resp = await fetch('https://api.apify.com/v2/key-value-stores/TyToNta7jGKkpszMZ/records/LATEST?disableRedirect=true');
+      const respJson = await resp.json();
+      setData(respJson.infectedByRegion);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
-  componentDidMount(){
-    this.apiCall()
-  }
-    async apiCall(){
-      let resp = await fetch('https://api.apify.com/v2/key-value-stores/TyToNta7jGKkpszMZ/records/LATEST?disableRedirect=true')
-      let respJson = await resp.json()
-      // console.warn(respJson)
-      this.setState({data:respJson.infectedByRegion})
-  }
+  useEffect(() => {
+    apiCall();
+  }, []);
 
-  render() {
-    return (
-      <View>
-        <Text style={{fontSize: 30, margin: 10}}> Lista de Vacinação Brasil </Text>
+  return (
+    <View>
+      <Text style={{fontSize: 30, margin: 10}}> Lista de Vacinação Brasil </Text>
         <FlatList 
           style={{marginBottom: 20}}
-
-          data={this.state.data}
-
-          renderItem={({item}) => 
+          data={data}
+          renderItem={({ item }) => (
             <Text style={{
               fontSize: 20, 
               backgroundColor: 'skyblue', 
@@ -37,15 +33,12 @@ export default class App extends PureComponent {
               marginBottom: 10, 
               textAlign: 'center', 
               borderWidth: 2 , 
-              borderColor: '#000'}}> 
-              
+              borderColor: '#000'
+              }}>
                 {item.state}:         {item.count}
-              
             </Text>
-         }
+          )}
         />
-
-      </View>
-    );
-  }
-}
+    </View>
+  );
+};
