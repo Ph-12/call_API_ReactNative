@@ -8,5 +8,5 @@
     - npm install @react-native-masked-view/masked-view
     - npm install @react-navigation/native-stack 
     
-- Obs: Caso use expo nescessario instalação de outros modulos busque em https://reactnavigation.org/
+- Obs: Caso use expo nescessario instalação de outros modulos busque em https://reactnavigation.org/ em Get started, Stack e Native Stack.
 
