@@ -23,7 +23,7 @@ export default class App extends PureComponent {
   render() {
     return (
       <View>
-        <Text style={{fontSize: 30, margin: 10}}> Lista de Vacinação Brasil </Text>
+        <Text style={{fontSize: 30, margin: 10}}> Lista de Vacinação Class </Text>
         <FlatList 
           style={{marginBottom: 20}}
           data={this.state.data}
