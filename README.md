@@ -1,4 +1,5 @@
 - Chamando API no react native. Sem o mudulo axios, mas de preferencia use-o.
+- Lembrando que todos os codigos estão na pasta "src".
 - add 2 modos de fazer essa chamada. Você pode copiar completamente os arquivos "App_class.js" ou "App_function.js" para o seu App.js que irar funcionar normalmente.
 - Caso descida baixar o meu projeto completo e nescessario instalação de alguns modulos. Segue lista:
   - npm install @react-navigation/native
